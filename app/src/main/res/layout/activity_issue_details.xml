@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="data"
+            type="com.issue_tracker.android.network.model.IssueListResponse.IssueListResponseItem" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:background="@color/bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.issue_details.IssueDetailsActivity">
+
+        <TextView
+            android:layout_margin="@dimen/_16sdp"
+            tools:text="Change the loader style from your app"
+            android:text="@{data.title}"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            tools:text="State: Open"
+            android:text='@{"State: "+data.state}'
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            tools:text="Total Comments: 1"
+            android:text='@{"Total Comments: "+String.valueOf(data.comments)}'
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            tools:text="Created At: 20/03/2023 02:30 PM"
+            android:text='@{"Cteated At: "+data.createdAt}'
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            tools:text="Owner: asad"
+            android:text='@{"Owner: "+data.user.login}'
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_32sdp"
+            android:text="Comments"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentsRV"
+                tools:listitem="@layout/item_issue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
